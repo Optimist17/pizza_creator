@@ -23,16 +23,22 @@ namespace Lernen_3
     public partial class MainWindow : Window
     {
 
+        public ObservableCollection<Pizza> Pizzas { get; set; }
+
         public MainWindow()
         {
+            Pizzas = new ObservableCollection<Pizza>();
+            Pizzas.Add(new Pizza("Meine Pizza", 3));
             InitializeComponent();
+            DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Double diameter = Double.Parse(PizzaDiameter.Text);
             Pizza pizza = new Pizza(PizzaName.Text, diameter);
-            Anzeige.Content = pizza.Name + " hat einen Durchmesser von " + pizza.Diameter + "cm und einen Umfang von " + Math.Round(pizza.Range, 2) + "cm.";
+            Pizzas.Add(pizza);
+            //Anzeige.Content = pizza.Name + " hat einen Durchmesser von " + pizza.Diameter + "cm und einen Umfang von " + Math.Round(pizza.Range, 2) + "cm.";
         }
     }
 }

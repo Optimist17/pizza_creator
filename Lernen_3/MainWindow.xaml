@@ -17,6 +17,16 @@
             <TextBox Name="PizzaDiameter" Text="10"></TextBox>
             <Button Click="Button_Click" Content="Abschicken"/>
         </StackPanel>
-        <Label Grid.Column="1" Name="Anzeige"></Label>
+        <!--<Label Grid.Column="1" Name="Anzeige"></Label>-->
+        <ListView Grid.Column="1" ItemsSource="{Binding Pizzas}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Name}"></Label>
+                        <Label Content="{Binding Diameter}"></Label>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
